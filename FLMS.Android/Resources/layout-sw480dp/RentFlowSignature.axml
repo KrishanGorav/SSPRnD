@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+  <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:tools="http://schemas.android.com/tools"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"   >
+    <ScrollView
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_weight="1">
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="vertical"
+          android:padding="20px"
+          android:minWidth="25px"
+          android:minHeight="25px">
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40px"
+            android:id="@+id/lstInspection" />
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40px"
+            android:id="@+id/lstCleanedBy" />
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40px"
+            android:id="@+id/lstEnteredBy" />
+        <Switch
+            android:text="Customer Present"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:textOn="YES"
+            android:textOff="NO"
+            android:showText="true"
+            android:scaleX="1"
+            android:scaleY="2"
+            android:layout_marginTop="50px" />
+        <!--<Button
+                android:text="Take Driver Signature"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/btnDriverSignature"
+                android:layout_marginTop="50px"
+                style="@style/RentACarCustomStyleButton" />
+            <Button
+                android:text="Take Customer Signature"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/btnCustomerSignature"
+                android:layout_marginTop="50px"
+                style="@style/RentACarCustomStyleButton" />-->
+      </LinearLayout>
+    </ScrollView>
+    <Toolbar
+     android:id="@+id/action_toolbar"
+     android:minHeight="?android:attr/actionBarSize"
+     android:background="?android:attr/colorAccent"
+     android:theme="@android:style/ThemeOverlay.Material.Dark.ActionBar"
+     android:layout_width="match_parent"
+     android:layout_marginTop="530px"
+     android:layout_height="wrap_content" />
+    <ProgressBar
+        android:id="@+id/progressLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="50dp"
+        android:minWidth="50dp"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+  </RelativeLayout>
+</LinearLayout>

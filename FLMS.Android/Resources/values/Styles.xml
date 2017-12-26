@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<resources>
+  <!-- Inherit from the light Material Theme -->
+  <style name="RentACarCustomTheme" parent="android:Theme.Material">
+    <!-- Override the app bar color -->
+    <item name="android:colorPrimary">@color/my_red</item>
+    <!-- Override the color of UI controls -->
+    <!--<item name="android:textColor">@color/my_red</item>-->    
+    <!--<item name="android:textColorPrimary">@color/my_red</item>-->
+    <item name="android:colorAccent">@color/my_red</item>
+    <!--<item name="android:typeface">serif</item>-->
+    
+  </style>
+  <style name="RentACarCustom.Splash" parent ="android:Theme.Material.NoActionBar">
+    <item name="android:windowBackground">@drawable/splash_screen</item>
+    <item name="android:windowNoTitle">true</item>
+    <item name="android:windowFullscreen">true</item>
+  </style>
+  <style name="RentACarCustomStyleButton" parent="android:Theme.Material" >
+    <item name="android:background">@color/my_red</item>
+    <item name="android:textColor" >#ffffff</item>
+    <item name="android:radius">6dp</item>
+  </style>
+</resources>

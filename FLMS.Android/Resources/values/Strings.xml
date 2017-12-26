@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="ApplicationName">RentACar</string>
+  <string-array name="strArrFuelLevel">
+    <item>Select Fuel Level</item>
+    <item>EMPTY</item>
+    <item>1/8</item>
+    <item>1/4</item>
+    <item>3/8</item>
+    <item>1/2</item>
+    <item>5/8</item>
+    <item>3/4</item>
+    <item>FULL</item>
+  </string-array>
+  <string-array name="strArrVehicleType">
+    <item>Select Vehicle Type</item>
+    <item>Car</item>
+    <item>Luton Van</item>
+    <item>Standard Van</item>
+  </string-array>
+  <string-array name="strArrRegNo">
+    <item>XX60HJX</item>
+    <item>KN60HJX</item>
+    <item>HL66JUI</item>
+    <item>HL60YUI</item>
+  </string-array>
+  <string-array name="strArrDamageType">
+    <item>(Select damage type)</item>
+    <item>Alloys</item>
+    <item>Dent</item>
+    <item>Repair</item>
+    <item>Scratch</item>
+  </string-array>
+  <string-array name="strInspectionConditions">
+    <item>(Select Inspection Conditions)</item>
+    <item>Wet</item>
+    <item>Dark</item>
+    <item>Dirty</item>
+    <item>Snow</item>
+    <item>Good</item>
+  </string-array>
+  <string-array name="strCleanedBy">
+    <item>(Select CleanedBy)</item>
+    <item>Paul Taylor</item>
+    <item>Karl Pool</item>
+    <item>Richard Stephenson</item>
+    <item>Simon Giles</item>
+    <item>Fiona Ruda</item>
+  </string-array>
+  <string-array name="strEnteredBy">
+    <item>(Select EnteredBy)</item>
+    <item>Paul Taylor</item>
+    <item>Karl Pool</item>
+    <item>Richard Stephenson</item>
+    <item>Simon Giles</item>
+    <item>Fiona Ruda</item>
+  </string-array>
+  <string-array name="strVehicle">
+    <item>VehicleID</item>
+    <item>Make</item>
+    <item>Model</item>
+    <item>RegNumber</item>
+    <item>RentStatus</item>
+    <item>VehicleType</item>
+    <item>1</item>
+    <item>1995</item>
+    <item>Model</item>
+    <item>XX60HJX</item>
+    <item>In</item>
+    <item>Car</item>
+    <item>2</item>
+    <item>1995</item>
+    <item>Model</item>
+    <item>KN60HJX</item>
+    <item>In</item>
+    <item>Standard Van</item>
+    <item>3</item>
+    <item>1995</item>
+    <item>Model</item>
+    <item>HL66JUI</item>
+    <item>In</item>
+    <item>Luton Van</item>
+  </string-array>
+</resources>

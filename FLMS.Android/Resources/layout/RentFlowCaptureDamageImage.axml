@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minWidth="25px"
+    android:minHeight="25px"
+    android:padding="20px">
+  <ScrollView
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+      <Spinner
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:id="@+id/lstDamageType"
+          android:layout_marginTop="50px" />
+      <Button
+          android:text="Capture using Camera"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:id="@+id/btnTakeImage"
+          android:layout_marginTop="50px"
+          style="@style/RentACarCustomStyleButton" />
+      <TextView
+        android:text="-------OR-------"
+        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="50px"
+        android:layout_gravity="center"
+            />
+      <Button
+          android:text="Select from Gallery"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:id="@+id/btnSelectImage"
+          android:layout_marginTop="50px"
+          style="@style/RentACarCustomStyleButton" />
+      <ImageView
+          android:layout_width="match_parent"
+          android:layout_height="300.0dp"
+          android:id="@+id/imgVehicle"
+          android:layout_marginTop="50px" />
+    </LinearLayout>
+  </ScrollView>
+</LinearLayout>

@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:focusableInTouchMode="true">
+  <LinearLayout
+         android:minWidth="25px"
+         android:minHeight="25px"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:orientation="horizontal"
+         android:id="@+id/progressLayout"
+         android:gravity="center">
+
+    <ProgressBar
+          android:layout_width="wrap_content"
+          android:layout_height="match_parent"
+          android:id="@+id/progressBar1"
+        />
+    <TextView
+          android:text="Loading.."
+          android:layout_width="wrap_content"
+          android:layout_height="match_parent"
+          android:id="@+id/textView1"
+          android:gravity="center" />
+  </LinearLayout>
+
+  <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="50px"
+        android:minWidth="25px"
+        android:minHeight="25px">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+          <CheckBox
+       android:text="Interior"
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:layout_marginTop="20dp"
+       android:id="@+id/chkInterior" />
+          <CheckBox
+       android:text="Roof"
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:layout_marginTop="20dp"
+       android:id="@+id/chkRoof" />
+          <CheckBox
+       android:text="Wind Screen"
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:layout_marginTop="20dp"
+       android:id="@+id/chkWindScreen" />
+          <CheckBox
+       android:text="Bonet"
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:layout_marginTop="20dp"
+       android:id="@+id/chkBonet" />
+          <CheckBox
+        android:text="Engine"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:id="@+id/chkEngine" />
+          <CheckBox
+          android:text="Tools"
+          android:layout_width="fill_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="20dp"
+          android:id="@+id/chkTools" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="50dp">
+
+          <CheckBox
+              android:text="OS Door"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginTop="20dp"
+              android:id="@+id/chkOSDoor" />
+          <CheckBox
+              android:text="OSF Wheel"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginTop="20dp"
+              android:id="@+id/chkOSFWheel" />
+          <CheckBox
+              android:text="Disc"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginTop="20dp"
+              android:id="@+id/chkDisc" />
+          <CheckBox
+              android:text="Spare Tyre"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginTop="20dp"
+              android:id="@+id/chkSpareTyre" />
+          <CheckBox
+               android:text="OSR Wheel"
+               android:layout_width="fill_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginTop="20dp"
+               android:id="@+id/chkOSRWheel" />
+          <CheckBox
+               android:text="Tyres"
+               android:layout_width="fill_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginTop="20dp"
+               android:id="@+id/chkTyres" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="50dp">
+          <CheckBox
+            android:text="NSR Wheel"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:id="@+id/chkNSRWheel" />
+          <CheckBox
+              android:text="Oil"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginTop="20dp"
+              android:id="@+id/chkOil" />
+          <CheckBox
+               android:text="Washer Fluid"
+               android:layout_width="fill_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginTop="20dp"
+               android:id="@+id/chkWasherFluid" />
+          <CheckBox
+               android:text="Coolant"
+               android:layout_width="fill_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginTop="20dp"
+               android:id="@+id/chkCoolant" />
+          <CheckBox
+               android:text="Alloy Wheel"
+               android:layout_width="fill_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginTop="20dp"
+               android:id="@+id/chkAlloyWheel" />
+          <CheckBox
+                android:text="Brake Fluid"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:id="@+id/chkBrakeFluid" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="50dp">
+          <CheckBox
+               android:text="Front Bumper"
+               android:layout_width="fill_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginTop="20dp"
+               android:id="@+id/chkFrontBumper" />
+          <CheckBox
+               android:text="NSF Wheel"
+               android:layout_width="fill_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginTop="20dp"
+               android:id="@+id/chkNSFWheel" />
+          <CheckBox
+               android:text="NS Door"
+               android:layout_width="fill_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginTop="20dp"
+               android:id="@+id/chkNSDoor" />
+          <CheckBox
+              android:text="Rear Bumper"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginTop="20dp"
+              android:id="@+id/chkRearBumper" />
+          <CheckBox
+             android:text="Taligate"
+             android:layout_width="fill_parent"
+             android:layout_height="wrap_content"
+             android:layout_marginTop="20dp"
+             android:id="@+id/chkTaligate" />
+        </LinearLayout>
+      </LinearLayout>
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="vertical">
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+        </LinearLayout>
+        <EditText
+            android:id="@+id/txtDamageDetails"
+            android:gravity="top|left"
+            android:inputType="textMultiLine"
+            android:hint="Enter details of damage and/or missing parts"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_marginTop="20dp"
+            android:lines="5"
+            android:scrollHorizontally="false" />
+        <EditText
+            android:id="@+id/txtLooseItems"
+            android:gravity="top|left"
+            android:inputType="textMultiLine"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:hint="Enter details of loose items"
+            android:lines="5"
+            android:layout_marginTop="20dp"
+            android:scrollHorizontally="false" />
+      </LinearLayout>
+    </LinearLayout>
+  </ScrollView>
+  <Toolbar
+      android:id="@+id/action_toolbar"
+      android:minHeight="?android:attr/actionBarSize"
+      android:background="?android:attr/colorAccent"
+      android:theme="@android:style/ThemeOverlay.Material.Dark.ActionBar"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content" />
+</LinearLayout>

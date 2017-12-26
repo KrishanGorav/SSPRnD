@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+  <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"  >
+    <LinearLayout
+   android:orientation="horizontal"
+   android:layout_width="match_parent"
+   android:layout_height="match_parent"
+   android:layout_weight="1">
+
+      <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+      >
+        <LinearLayout
+          android:id="@+id/layoutVehicleImages"
+          android:orientation="vertical"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginRight="10dp">
+          <!--<ImageView
+        android:layout_width="150px"
+        android:layout_height="150px"
+        android:src="@drawable/CarExterior"
+        android:id="@+id/imgVehicle1"
+        android:layout_gravity="center"
+        />
+    <ImageView
+        android:layout_width="150px"
+        android:layout_height="150px"
+        android:src="@drawable/CarExterior"
+        android:id="@+id/imgVehicle2"
+        android:layout_gravity="center"
+         />
+    <ImageView
+        android:layout_width="150px"
+        android:layout_height="150px"
+        android:src="@drawable/CarExterior"
+        android:id="@+id/imgVehicle3"
+        
+         />
+    <ImageView
+        android:layout_width="150px"
+        android:layout_height="150px"
+        android:src="@drawable/vehicle_in"
+        android:id="@+id/imgVehicle4"
+        
+         />
+    <ImageView
+    android:background="@drawable/CarExterior"
+        android:layout_width="150px"
+        android:layout_height="150px"
+        android:src="@drawable/vehicle_out"
+        android:id="@+id/imgVehicle5"
+        
+         />-->
+        </LinearLayout>
+      </ScrollView>
+      
+      <FrameLayout xmlns:tools="http://schemas.android.com/tools"
+      android:id="@+id/markdamage"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+       />
+    </LinearLayout>
+
+    <Toolbar
+        android:id="@+id/action_toolbar"
+        android:minHeight="?android:attr/actionBarSize"
+        android:background="?android:attr/colorAccent"
+        android:theme="@android:style/ThemeOverlay.Material.Dark.ActionBar"
+        android:layout_marginTop="540px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <ProgressBar
+        android:id="@+id/progressLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="50dp"
+        android:minWidth="50dp"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+  </RelativeLayout>
+</LinearLayout>

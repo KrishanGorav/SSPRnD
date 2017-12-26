@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusableInTouchMode="true">
+    <RelativeLayout xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="20dp">
+                <AutoCompleteTextView
+                    android:hint="Enter Vehicle Reg Number"
+                    android:layout_width="900dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/txtRegNo"
+                    android:maxLength="10"
+                    android:layout_marginTop="30px"
+                    android:inputType="text" />
+            <!--<EditText
+            android:inputType="text"
+            android:layout_width="900dp"
+            android:layout_height="wrap_content"
+            android:maxLength="300"
+            android:layout_marginTop="30px"
+            android:hint="Enter vehicle reg no"
+             />-->
+                <Button
+                    android:background="@drawable/Search"
+                    android:id="@+id/btnSearch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="20dp">
+              <GridView
+       xmlns:android="http://schemas.android.com/apk/res/android"
+       android:id="@+id/gridview"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:numColumns="6"
+       android:verticalSpacing="2dp"
+       android:horizontalSpacing="2dp"
+       android:background="#ff5555"
+       android:columnWidth="75dp"
+       android:layout_margin="15dp" >
+              </GridView>
+            </LinearLayout>
+        </LinearLayout>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+    </RelativeLayout>
+</LinearLayout>

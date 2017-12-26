@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+      android:orientation="vertical"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:focusableInTouchMode="true">
+  <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    <ScrollView
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:layout_weight="1">
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="vertical"
+          android:padding="20px"
+          android:minWidth="25px"
+          android:minHeight="25px">
+        <!--<ProgressBar
+               android:layout_height="wrap_content"
+               android:layout_width="match_parent"
+               android:id="@+id/progressbar"
+               android:indeterminate="true"
+               android:progress="25"/>-->
+        <AutoCompleteTextView
+            android:hint="Enter Vehicle Reg Number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/ddlRegNo"
+            android:maxLength="10"
+            android:inputType="text" />
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30px"
+            android:id="@+id/ddlVehicleType"
+          />
+        <!--<TextView
+                android:text="Reg No"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/lblRegNo"
+                android:layout_marginTop="5px" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtRegNo"
+                android:maxLength="10"
+                android:inputType="text"/>-->
+        <EditText
+            android:inputType="numberSigned"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtMileage"
+            android:hint="Enter Car Mileage"
+            android:layout_marginTop="30px"
+            android:maxLength="5" />
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/ddlFuelLevel"
+            android:layout_marginTop="30px"
+            android:focusable = "true"
+            android:focusableInTouchMode = "true"/>
+
+        <EditText
+            android:inputType="phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLength="15"
+            android:hint="Enter Mobile Number"
+            android:layout_marginTop="30px"
+            android:id="@+id/txtMobile" />
+
+        <EditText
+            android:inputType="textEmailAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLength="300"
+            android:layout_marginTop="30px"
+            android:hint="Enter Email Address"
+            android:id="@+id/txtEmail" />
+    </LinearLayout>
+    </ScrollView>
+    <Toolbar
+       android:id="@+id/action_toolbar"
+       android:minHeight="?android:attr/actionBarSize"
+       android:background="?android:attr/colorAccent"
+       android:theme="@android:style/ThemeOverlay.Material.Dark.ActionBar"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_marginTop="532px"
+       android:layout_gravity="left" />
+    <ProgressBar
+        android:id="@+id/progressLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="50dp"
+        android:minWidth="50dp"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+  </RelativeLayout>
+ 
+ 
+</LinearLayout>

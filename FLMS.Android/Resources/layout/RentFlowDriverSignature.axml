@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+  <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:tools="http://schemas.android.com/tools"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"  >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_weight="1">
+      <xamarin.controls.SignaturePadView
+          android:id="@+id/signatureDriver"
+          android:layout_width="470dp"
+          android:layout_height="fill_parent" />
+      <xamarin.controls.SignaturePadView
+          android:id="@+id/signatureCustomer"
+          android:layout_width="470dp"
+          android:layout_height="fill_parent"
+          android:layout_marginLeft="10dp" />
+    </LinearLayout>
+    <Toolbar
+       android:id="@+id/action_toolbar"
+       android:minHeight="?android:attr/actionBarSize"
+       android:background="?android:attr/colorAccent"
+       android:theme="@android:style/ThemeOverlay.Material.Dark.ActionBar"
+       android:layout_width="match_parent"
+       android:layout_marginTop="530px"
+       android:layout_height="wrap_content"
+       android:layout_gravity="left" />
+    <ProgressBar
+        android:id="@+id/progressLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="50dp"
+        android:minWidth="50dp"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+  </RelativeLayout>
+</LinearLayout>

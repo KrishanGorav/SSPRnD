@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+  <item
+       android:id="@+id/menu_back"
+       android:icon="@drawable/ic_action_arrow_back"
+       android:showAsAction="always"
+       android:title="Back"
+       />
+  <item
+       android:id="@+id/menu_dashboard"
+       android:icon="@drawable/ic_action_dashboard"
+       android:showAsAction="always"
+       android:title="Dashboard" />
+  <item
+       android:id="@+id/menu_sendsms"
+       android:icon="@drawable/ic_action_sms"
+       android:showAsAction="always"
+       android:title="Send SMS" />
+  <item
+       android:id="@+id/menu_sendemail"
+       android:icon="@drawable/ic_action_email"
+       android:showAsAction="always"
+       android:title="Send Email" />  
+  <item
+       android:id="@+id/menu_video"
+       android:icon="@drawable/ic_action_videocam"
+       android:showAsAction="always"
+       android:title="Video" />
+  <item
+       android:id="@+id/menu_save"
+       android:icon="@drawable/ic_action_save"
+       android:showAsAction="always"
+       android:title="Save" />
+  <item
+       android:id="@+id/menu_next"
+       android:icon="@drawable/ic_action_arrow_forward"
+       android:showAsAction="always"
+       android:title="Next"       
+       /> 
+  
+</menu>

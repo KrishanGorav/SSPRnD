@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:textAlignment="center">
+                <Button
+                    style="@style/RentACarCustomStyleButton"
+                    android:id="@+id/btnStartCover"
+                    android:text="Start Cover"
+                    android:layout_marginLeft="140px"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="150px"
+                    android:textAlignment="center"
+                    android:layout_marginRight="268.5dp" />
+                <Button
+                    style="@style/RentACarCustomStyleButton"
+                    android:id="@+id/btnStopCover"
+                    android:layout_marginLeft="140px"
+                    android:text="Stop Cover"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="50px" />
+            </LinearLayout>
+        </ScrollView>
+        <ProgressBar
+            android:id="@+id/progressLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minHeight="50dp"
+            android:minWidth="50dp"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+</LinearLayout>
