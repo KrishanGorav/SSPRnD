@@ -86,6 +86,7 @@
     <Compile Include="Activities\SendSMSActivity.cs" />
     <Compile Include="ApplicationClass.cs" />
     <Compile Include="CommonFunctions.cs" />
+    <Compile Include="CoordinateService.cs" />
     <Compile Include="DataManager.cs" />
     <Compile Include="GPSService.cs" />
     <Compile Include="LatLng.cs" />
