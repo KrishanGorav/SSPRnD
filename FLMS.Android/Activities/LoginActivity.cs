@@ -8,6 +8,8 @@ using System.IO;
 using SQLite;
 using RentACar.UI.Modals;
 using Android;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace RentACar.UI
 {
@@ -35,7 +37,7 @@ namespace RentACar.UI
             txtPassword = FindViewById<EditText>(Resource.Id.txtPassword);
             btnLogin = FindViewById<Button>(Resource.Id.btnLogin);
 
-            btnLogin.Click += BtnLogin_Click ;
+            btnLogin.Click += BtnLogin_Click;
         }
 
         private void BtnLogin_Click(object sender, EventArgs e)
@@ -52,6 +54,10 @@ namespace RentACar.UI
             var callDialog = new AlertDialog.Builder(this);
             if (!String.IsNullOrWhiteSpace(txtUsername.Text.Trim()) && !String.IsNullOrWhiteSpace(txtPassword.Text.Trim()))
             {
+                //if (CommonFunctions.IsNetworkConnected())
+                //{
+                //    List<UserDetail> userDetail = await GetLoginAsync(txtUsername.Text.Trim());
+                //}
                 if (txtUsername.Text.Trim() == "demo" && txtPassword.Text.Trim() == "demo")
                 {
                     this.progressLayout.Visibility = ViewStates.Visible;
@@ -67,7 +73,7 @@ namespace RentACar.UI
                     ApplicationClass.UserId = userDetail.UserId;
                     ApplicationClass.UserName = userDetail.UserName;
                     ApplicationClass.CompanyId = userDetail.CompanyId;
-                    
+
                     var intent = new Intent(this, typeof(MainMenuActivity));
                     StartActivity(intent);
                     Finish();
@@ -81,12 +87,30 @@ namespace RentACar.UI
                 }
             }
             else
-            {  
+            {
                 callDialog.SetMessage("Enter Login Details");
                 callDialog.SetNegativeButton("OK", delegate { });
                 // Show the alert dialog to the user and wait for response.
                 callDialog.Show();
             }
+        }
+
+        private async Task<List<UserDetail>> GetLoginAsync(string user)
+        {
+            List<UserDetail> obj = null;
+            try
+            {
+                GetAPIResult<UserDetail> api = CommonFunctions.APIGet<UserDetail>("GetUser/" + user, string.Empty);
+                if (api.HttpStatus == System.Net.HttpStatusCode.OK)
+                {
+                    obj = api.DataColl;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+            return obj;
         }
     }
 }

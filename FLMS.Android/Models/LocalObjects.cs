@@ -11,6 +11,7 @@ using Android.Views;
 using Android.Widget;
 using SQLite;
 using System.Drawing;
+using System.Net;
 
 namespace RentACar.UI.Modals
 {
@@ -105,6 +106,7 @@ namespace RentACar.UI.Modals
         public string SmsAPIUrl { get; set; }
         public string ServiceEndPoint { get; set; }
         public bool AutoSync { get; set; }
+        public string ServiceToken { get; set; }
     }
     [Serializable]
     class SmsToSend
@@ -198,5 +200,22 @@ namespace RentACar.UI.Modals
     class VehicleImageList
     {
         public List<VehicleImage> VehicleImages { get; set; }
+    }
+
+    /// <summary>
+    /// Class used to communicate with API calls
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    //[Serializable]
+    public class GetAPIResult<T>
+    {
+        public HttpStatusCode HttpStatus { get; set; }
+        public List<T> DataColl { get; set; }
+        public T Data { get; set; }
+        public string Da { get; set; }
+        public string Headers { get; set; }
+        public string Request { get; set; }
+        public string Content { get; set; }
+        public string KnownException { get; set; }
     }
 }
