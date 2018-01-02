@@ -191,10 +191,10 @@ namespace RentACar.UI
                     }
                     break;
                 case Resource.Id.menu_cancel:
-                    this.progressLayout.Visibility = ViewStates.Visible;
-                    var intentVehicle = new Intent(this, typeof(RentFlowDriverSignatureActivity));
-                    intentVehicle.PutExtra("RentRunningTrans", JsonConvert.SerializeObject(rentRunningTrans));
-                    StartActivity(intentVehicle);
+                    //this.progressLayout.Visibility = ViewStates.Visible;
+                    //var intentVehicle = new Intent(this, typeof(RentFlowDriverSignatureActivity));
+                    //intentVehicle.PutExtra("RentRunningTrans", JsonConvert.SerializeObject(rentRunningTrans));
+                    //StartActivity(intentVehicle);
                     break;
             }
             //Toast.MakeText(this, "Top ActionBar pressed: " + item.TitleFormatted, ToastLength.Short).Show();

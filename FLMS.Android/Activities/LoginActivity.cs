@@ -8,6 +8,8 @@ using System.IO;
 using SQLite;
 using RentACar.UI.Modals;
 using Android;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace RentACar.UI
 {
@@ -35,7 +37,7 @@ namespace RentACar.UI
             txtPassword = FindViewById<EditText>(Resource.Id.txtPassword);
             btnLogin = FindViewById<Button>(Resource.Id.btnLogin);
 
-            btnLogin.Click += BtnLogin_Click ;
+            btnLogin.Click += BtnLogin_Click;
         }
 
         private void BtnLogin_Click(object sender, EventArgs e)
@@ -52,25 +54,41 @@ namespace RentACar.UI
             var callDialog = new AlertDialog.Builder(this);
             if (!String.IsNullOrWhiteSpace(txtUsername.Text.Trim()) && !String.IsNullOrWhiteSpace(txtPassword.Text.Trim()))
             {
-                if (txtUsername.Text.Trim() == "demo" && txtPassword.Text.Trim() == "demo")
+                if (txtUsername.Text.Trim() == "Deepak" && txtPassword.Text.Trim() == "Test@123")
                 {
-                    this.progressLayout.Visibility = ViewStates.Visible;
-                    //Save user details to local storage
-                    UserDetail userDetail = new UserDetail();
-                    userDetail.UserId = 1;
-                    userDetail.CompanyId = 1;
-                    userDetail.UserName = txtUsername.Text.Trim();
-                    userDetail.Password = txtPassword.Text.Trim();
-                    DataManager dataManager = new DataManager();
-                    dataManager.UpdateUserDetailsToLocal(userDetail);
+                    if (CommonFunctions.IsNetworkConnected())
+                    {
+                        this.progressLayout.Visibility = ViewStates.Visible;
+                        List<UserDetail> oUserDetail =  GetLogin(txtUsername.Text.Trim(),txtPassword.Text.Trim());
 
-                    ApplicationClass.UserId = userDetail.UserId;
-                    ApplicationClass.UserName = userDetail.UserName;
-                    ApplicationClass.CompanyId = userDetail.CompanyId;
-                    
-                    var intent = new Intent(this, typeof(MainMenuActivity));
-                    StartActivity(intent);
-                    Finish();
+                        UserDetail userDetail = new UserDetail();
+                        if (oUserDetail != null)
+                        {
+                            userDetail.userid = oUserDetail[0].userid;
+                            userDetail.UserDefaultVehicle = 1;
+                            userDetail.userName = oUserDetail[0].userName;
+                            userDetail.token = oUserDetail[0].token;
+                        }
+                        else
+                        {
+                            userDetail.userid = 1;
+                            userDetail.UserDefaultVehicle = 1;
+                            userDetail.userName = txtUsername.Text.Trim();
+                            userDetail.token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6WyIxIiwiZGVlcGFrIl0sIm5iZiI6MTUxNDg3MjM5MCwiZXhwIjoxNTE3NTUwNzkwLCJpYXQiOjE1MTQ4NzIzOTAsImlzcyI6IkV4YW1wbGVJc3N1ZXIiLCJhdWQiOiJFeGFtcGxlQXVkaWVuY2UifQ.IDzYN3gqwXfkM_bN0Br1spInlTuYqm4CDb15xwpObvI";
+                        }
+                        userDetail.Password = txtPassword.Text.Trim();
+                        //Save user details to local storage
+                        DataManager dataManager = new DataManager();
+                        dataManager.UpdateUserDetailsToLocal(userDetail);
+
+                        ApplicationClass.userId = userDetail.userid;
+                        ApplicationClass.username = userDetail.userName;
+                        ApplicationClass.UserDefaultVehicle = userDetail.UserDefaultVehicle;
+                        ApplicationClass.ServiceEndPoint = "http://192.168.73.50:8000/api/";
+                        var intent = new Intent(this, typeof(MainMenuActivity));
+                        StartActivity(intent);
+                        Finish();
+                    }
                 }
                 else
                 {
@@ -81,12 +99,48 @@ namespace RentACar.UI
                 }
             }
             else
-            {  
+            {
                 callDialog.SetMessage("Enter Login Details");
                 callDialog.SetNegativeButton("OK", delegate { });
                 // Show the alert dialog to the user and wait for response.
                 callDialog.Show();
             }
+        }
+
+        private async Task<List<UserDetail>> GetLoginAsync(string user)
+        {
+            List<UserDetail> obj = null;
+            try
+            {
+                GetAPIResult<UserDetail> api = CommonFunctions.APIGet<UserDetail>("GetUser/" + user, string.Empty);
+                if (api.HttpStatus == System.Net.HttpStatusCode.OK)
+                {
+                    obj = api.DataColl;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+            return obj;
+        }
+
+        private List<UserDetail> GetLogin(string user,string password)
+        {
+            List<UserDetail> obj = null;
+            try
+            {
+                GetAPIResult<UserDetail> api = CommonFunctions.APIGet<UserDetail>("auth/login/" + user, string.Empty);
+                if (api.HttpStatus == System.Net.HttpStatusCode.OK)
+                {
+                    obj = api.DataColl;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+            return obj;
         }
     }
 }

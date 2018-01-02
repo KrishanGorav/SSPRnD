@@ -230,42 +230,42 @@ namespace RentACar.UI
                     break;
                 case Resource.Id.menu_cancel:
 
-                    string FromActivity = Intent.GetStringExtra("FromActivity");
-                    if (FromActivity == "Vehicle")
-                    {
-                        this.progressLayout.Visibility = ViewStates.Visible;
-                        var intentVehicle = new Intent(this, typeof(RentFlowVehicleActivity));
-                        intentVehicle.PutExtra("RentRunningTrans", JsonConvert.SerializeObject(rentRunningTrans));
-                        StartActivity(intentVehicle);
-                    }
-                    else if (FromActivity == "MarkDamage")
-                    {
-                        this.progressLayout.Visibility = ViewStates.Visible;
-                        var intentVehicle = new Intent(this, typeof(RentFlowMarkDamageActivity));
-                        intentVehicle.PutExtra("RentRunningTrans", JsonConvert.SerializeObject(rentRunningTrans));
-                        StartActivity(intentVehicle);
-                    }
-                    else if (FromActivity == "CheckList")
-                    {
-                        this.progressLayout.Visibility = ViewStates.Visible;
-                        var intentVehicle = new Intent(this, typeof(RentFlowCheckListActivity));
-                        intentVehicle.PutExtra("RentRunningTrans", JsonConvert.SerializeObject(rentRunningTrans));
-                        StartActivity(intentVehicle);
-                    }
-                    else if (FromActivity == "SignatureAvtivity")
-                    {
-                        this.progressLayout.Visibility = ViewStates.Visible;
-                        var intentVehicle = new Intent(this, typeof(RentFlowSignatureActivity));
-                        intentVehicle.PutExtra("RentRunningTrans", JsonConvert.SerializeObject(rentRunningTrans));
-                        StartActivity(intentVehicle);
-                    }
-                    else if (FromActivity == "DriverSignatureActivity")
-                    {
-                        this.progressLayout.Visibility = ViewStates.Visible;
-                        var intentVehicle = new Intent(this, typeof(RentFlowDriverSignatureActivity));
-                        intentVehicle.PutExtra("RentRunningTrans", JsonConvert.SerializeObject(rentRunningTrans));
-                        StartActivity(intentVehicle);
-                    }
+                    //string FromActivity = Intent.GetStringExtra("FromActivity");
+                    //if (FromActivity == "Vehicle")
+                    //{
+                    //    this.progressLayout.Visibility = ViewStates.Visible;
+                    //    var intentVehicle = new Intent(this, typeof(RentFlowVehicleActivity));
+                    //    intentVehicle.PutExtra("RentRunningTrans", JsonConvert.SerializeObject(rentRunningTrans));
+                    //    StartActivity(intentVehicle);
+                    //}
+                    //else if (FromActivity == "MarkDamage")
+                    //{
+                    //    this.progressLayout.Visibility = ViewStates.Visible;
+                    //    var intentVehicle = new Intent(this, typeof(RentFlowMarkDamageActivity));
+                    //    intentVehicle.PutExtra("RentRunningTrans", JsonConvert.SerializeObject(rentRunningTrans));
+                    //    StartActivity(intentVehicle);
+                    //}
+                    //else if (FromActivity == "CheckList")
+                    //{
+                    //    this.progressLayout.Visibility = ViewStates.Visible;
+                    //    var intentVehicle = new Intent(this, typeof(RentFlowCheckListActivity));
+                    //    intentVehicle.PutExtra("RentRunningTrans", JsonConvert.SerializeObject(rentRunningTrans));
+                    //    StartActivity(intentVehicle);
+                    //}
+                    //else if (FromActivity == "SignatureAvtivity")
+                    //{
+                    //    this.progressLayout.Visibility = ViewStates.Visible;
+                    //    var intentVehicle = new Intent(this, typeof(RentFlowSignatureActivity));
+                    //    intentVehicle.PutExtra("RentRunningTrans", JsonConvert.SerializeObject(rentRunningTrans));
+                    //    StartActivity(intentVehicle);
+                    //}
+                    //else if (FromActivity == "DriverSignatureActivity")
+                    //{
+                    //    this.progressLayout.Visibility = ViewStates.Visible;
+                    //    var intentVehicle = new Intent(this, typeof(RentFlowDriverSignatureActivity));
+                    //    intentVehicle.PutExtra("RentRunningTrans", JsonConvert.SerializeObject(rentRunningTrans));
+                    //    StartActivity(intentVehicle);
+                    //}
                     break;
             }
             //Toast.MakeText(this, "Top ActionBar pressed: " + item.TitleFormatted, ToastLength.Short).Show();

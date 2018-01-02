@@ -74,18 +74,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Activities\CaptureVideoActivity.cs" />
-    <Compile Include="Activities\RentFlowCaptureDamageImageActivity.cs" />
-    <Compile Include="Activities\RentFlowCheckListActivity.cs" />
-    <Compile Include="Activities\RentFlowCustomerSignatureActivity.cs" />
-    <Compile Include="Activities\RentFlowDriverSignatureActivity.cs" />
-    <Compile Include="Activities\RentFlowMarkDamageActivity.cs" />
-    <Compile Include="Activities\RentFlowSignatureActivity.cs" />
-    <Compile Include="Activities\RentFlowVehicleActivity.cs" />
     <Compile Include="Activities\SendEmailActivity.cs" />
     <Compile Include="Activities\SendSMSActivity.cs" />
     <Compile Include="ApplicationClass.cs" />
     <Compile Include="CommonFunctions.cs" />
+    <Compile Include="CoordinateService.cs" />
     <Compile Include="DataManager.cs" />
     <Compile Include="GPSService.cs" />
     <Compile Include="LatLng.cs" />

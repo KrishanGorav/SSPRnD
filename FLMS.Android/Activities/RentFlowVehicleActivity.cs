@@ -86,7 +86,7 @@ namespace RentACar.UI
 
             var actionToolbar = FindViewById<Toolbar>(Resource.Id.action_toolbar);
             actionToolbar.SetNavigationIcon(Resource.Drawable.ic_action_account_circle);
-            actionToolbar.Title = ApplicationClass.UserName;
+            actionToolbar.Title = ApplicationClass.username;
             actionToolbar.SetPadding(00, 0, 0, 00);
             //actionToolbar.SetContentInsetsAbsolute(0, 0);
             actionToolbar.InflateMenu(Resource.Menu.action_menus);
@@ -305,9 +305,9 @@ namespace RentACar.UI
                 case Resource.Id.menu_logout:
                     DataManager objDataManager = new DataManager();
                     objDataManager.Logout();
-                    ApplicationClass.UserId = 0;
-                    ApplicationClass.UserName = null;
-                    ApplicationClass.CompanyId = 0;
+                    ApplicationClass.userId = 0;
+                    ApplicationClass.username = null;
+                    ApplicationClass.SecurityToken = null;
                     var intent_logout = new Intent(this, typeof(LoginActivity));
                     StartActivity(intent_logout);
                     Finish();

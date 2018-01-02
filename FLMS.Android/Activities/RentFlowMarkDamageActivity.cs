@@ -53,7 +53,7 @@ namespace RentACar.UI
             {
                 var actionToolbar = FindViewById<Toolbar>(Resource.Id.action_toolbar);
                 actionToolbar.SetNavigationIcon(Resource.Drawable.ic_action_account_circle);
-                actionToolbar.Title = ApplicationClass.UserName;
+                actionToolbar.Title = ApplicationClass.username;
                 actionToolbar.SetPadding(0, 0, 0, 00);
                 actionToolbar.InflateMenu(Resource.Menu.action_menus);
                 actionToolbar.Menu.FindItem(Resource.Id.menu_save).SetVisible(false);

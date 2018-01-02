@@ -173,9 +173,9 @@ namespace RentACar.UI
                     this.progressLayout.Visibility = ViewStates.Visible;
                     objDataManager = new DataManager();
                     objDataManager.Logout();
-                    ApplicationClass.UserId = 0;
-                    ApplicationClass.UserName = null;
-                    ApplicationClass.CompanyId = 0;
+                    ApplicationClass.userId = 0;
+                    ApplicationClass.username = null;
+                    ApplicationClass.SecurityToken = null;
                     var intent_logout = new Intent(this, typeof(LoginActivity));
                     StartActivity(intent_logout);
                     break;

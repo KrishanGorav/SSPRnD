@@ -19,6 +19,7 @@ namespace RentACar.UI
         Button btnStartCover;
         Button btnStopCover;
         ProgressBar progressLayout;
+        bool isServiceRunning = false;
         //LinearLayout loutAutoSync;
 
         GPSServiceBinder _binder;
@@ -66,6 +67,17 @@ namespace RentACar.UI
             btnStopCover.Click += btnStopCover_Click;
             this.progressLayout = FindViewById<ProgressBar>(Resource.Id.progressLayout);
             this.progressLayout.Visibility = ViewStates.Gone;
+
+            if (isServiceRunning == true)
+            {
+                btnStartCover.Enabled = false;
+                btnStopCover.Enabled = true;
+            }
+            else
+            {
+                btnStartCover.Enabled = true;
+                btnStopCover.Enabled = false;
+            }
         }
 
         private void btnAutoSync_Click(object sender, EventArgs e)
@@ -89,13 +101,12 @@ namespace RentACar.UI
 
         private void btnStartCover_Click(object sender, EventArgs e)
         {
-          this.progressLayout.Visibility = ViewStates.Visible;
-            RegisterService();
-            //  var intent = new Intent(this, typeof(RentFlowVehicleActivity));
-            //  intent.PutExtra("ShowVehicleForStatus", "IN");
-            //  intent.PutExtra("TransType", "PRE");
-
-            //  StartActivity(intent);
+            this.progressLayout.Visibility = ViewStates.Visible;
+            StartService(new Intent(this, typeof(SimpleStartedService)));
+            isServiceRunning = true;
+            btnStartCover.Enabled = false;
+            btnStopCover.Enabled = true;
+            this.progressLayout.Visibility = ViewStates.Invisible;
         }
 
         private void RegisterService()
@@ -107,12 +118,12 @@ namespace RentACar.UI
 
         private void btnStopCover_Click(object sender, EventArgs e)
         {
-           //this.progressLayout.Visibility = ViewStates.Visible;
-           // var intent = new Intent(this, typeof(RentFlowVehicleActivity));
-           // intent.PutExtra("ShowVehicleForStatus", "PRE");
-           // intent.PutExtra("TransType", "OUT");
-            
-           // StartActivity(intent);
+            this.progressLayout.Visibility = ViewStates.Visible;
+            StopService(new Intent(this, typeof(SimpleStartedService)));
+            isServiceRunning = false;
+            btnStartCover.Enabled = true;
+            btnStopCover.Enabled = false;
+            this.progressLayout.Visibility = ViewStates.Invisible;
         }
 
         private void btnRentIN_Click(object sender, EventArgs e)
@@ -158,9 +169,9 @@ namespace RentACar.UI
                     this.progressLayout.Visibility = ViewStates.Visible;
                     DataManager objDataManager = new DataManager();
                     objDataManager.Logout();
-                    ApplicationClass.UserId = 0;
-                    ApplicationClass.UserName = null;
-                    ApplicationClass.CompanyId = 0;
+                    ApplicationClass.userId = 0;
+                    ApplicationClass.username = null;
+                    ApplicationClass.UserDefaultVehicle = 0;
                     var intent_logout = new Intent(this, typeof(LoginActivity));
                     StartActivity(intent_logout);
                     break;

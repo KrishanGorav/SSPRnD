@@ -14,10 +14,11 @@ namespace RentACar.UI
 {
     public class ApplicationClass : Application
     {
-        public static int UserId;
-        public static string UserName;
-        public static int CompanyId;
-        
+        public static int userId;
+        public static string username;
+        public static int UserDefaultVehicle;
+        public static string ServiceEndPoint;
+        public static string SecurityToken;
     }
    
 }

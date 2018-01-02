@@ -43,16 +43,15 @@ namespace RentACar.UI
             
             DataManager dataManager = new DataManager();
             var userDetail = dataManager.GetUser();
-
             if (userDetail == null)
             {
                 StartActivity(new Intent(Application.Context, typeof(LoginActivity)));
             }
             else
             {
-                ApplicationClass.UserId = userDetail.UserId;
-                ApplicationClass.UserName = userDetail.UserName;
-                ApplicationClass.CompanyId = userDetail.CompanyId;
+                ApplicationClass.userId = userDetail.userid;
+                ApplicationClass.username = userDetail.userName;
+                ApplicationClass.UserDefaultVehicle = 1;
                 var dashBoard = new Intent(this, typeof(MainMenuActivity));
                 StartActivity(dashBoard);
             }
@@ -63,17 +62,21 @@ namespace RentACar.UI
             DataManager dataManager = new DataManager();
             dataManager.CreateUserTable();
             dataManager.CreateVehicleTable();
-            dataManager.AddDefaultVehicles();
-            dataManager.CreateVehicleRentTable();
-            dataManager.CreateVehicleMarkDamageDetailsTable();
-            dataManager.CreateVehicleMarkedDamageImageTable();
-            dataManager.CreateSmsTemplateTable();
-            dataManager.CreateEmailTemplateTable();
-            dataManager.AddDefaultSmsTemplate();
-            dataManager.AddDefaultEmailTemplate();
-            dataManager.createSmsToSendTable();
-            dataManager.CreateEmailToSendTable();
+            dataManager.CreateUserVehicleTable();
+            dataManager.CreateJourneyTable();
+            dataManager.CreateJourneyDetailTable();
             dataManager.CreateSettingTable();
+            //dataManager.AddDefaultVehicles();
+            //dataManager.CreateVehicleRentTable();
+            //dataManager.CreateVehicleMarkDamageDetailsTable();
+            //dataManager.CreateVehicleMarkedDamageImageTable();
+            //dataManager.CreateSmsTemplateTable();
+            //dataManager.CreateEmailTemplateTable();
+            //dataManager.AddDefaultSmsTemplate();
+            //dataManager.AddDefaultEmailTemplate();
+            //dataManager.createSmsToSendTable();
+            //dataManager.CreateEmailToSendTable();
+            //dataManager.CreateSettingTable();
 
 
             //Console.WriteLine("Creating database, if it doesn't already exist");
@@ -98,8 +101,5 @@ namespace RentACar.UI
             //    Console.WriteLine(s.Id + " " + s.Symbol);
             //}
         }
-
-        
-
     }
 }
