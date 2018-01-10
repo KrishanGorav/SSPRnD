@@ -69,6 +69,7 @@ namespace RentACar.UI
                         var currentJourney = db.Table<Journey>().Where(o => o.JourneyId == ApplicationClass.currentRunningJourneyId).FirstOrDefault();
                         if (currentJourney != null)
                         {
+                            journey.JourneyId = currentJourney.JourneyId;
                             journey.StartDate = currentJourney.StartDate;
                             journey.EndDate = currentJourney.EndDate;
                         }

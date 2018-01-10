@@ -17,7 +17,7 @@ namespace RentACar.UI.Activities
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            geoCoder=new Geocoder(this);
+            
             ActionBar actionBar = ((Activity)this).ActionBar;
             actionBar.SetDisplayShowHomeEnabled(true);
             actionBar.SetLogo(Resource.Drawable.ic_launcher);
@@ -25,13 +25,15 @@ namespace RentACar.UI.Activities
 
             SetContentView(Resource.Layout.JourneySummary);
 
-            this.progressLayout = FindViewById<ProgressBar>(Resource.Id.progressLayout);
-            this.progressLayout.Visibility = ViewStates.Gone;
             // Create your application here
             if (ApplicationClass.currentRunningJourneyId != 0)
             {
                 try
                 {
+                    this.progressLayout = FindViewById<ProgressBar>(Resource.Id.progressLayout);
+                    geoCoder = new Geocoder(this);
+                    this.progressLayout.Visibility = ViewStates.Gone;
+
                     var lblStartDate = FindViewById<TextView>(Resource.Id.lblStartDate);
                     var lblFrom = FindViewById<TextView>(Resource.Id.lblFrom);
                     var lblTo = FindViewById<TextView>(Resource.Id.lblTo);
@@ -39,23 +41,40 @@ namespace RentACar.UI.Activities
                     var lblCost = FindViewById<TextView>(Resource.Id.lblCost);
                     DataManager dataManager = new DataManager();
                     Journey lastJourney = dataManager.GetLastJourney();
-                    JourneyDetail journeyDetailStart = dataManager.GetStaringPointForJourney();
-                    if (lblStartDate != null)
+                    
+                    if (lastJourney.JourneyId != 0)
                     {
-                        lblStartDate.Text = "Start at : " + lastJourney.StartDate.ToString("dd/MM/yyyy hh:mm");
-                        //string fromLocation = "";
-                        //string toLocation = "";
-                        GetLocationNameAsync(Convert.ToDouble(journeyDetailStart.Latitude), Convert.ToDouble(journeyDetailStart.Longitude), lblFrom,"From : ");
-                        //lblFrom.Text = "From: " + fromLocation;
-                        JourneyDetail journeyDetailend = dataManager.GetEndPointForJourney();
-                        GetLocationNameAsync(Convert.ToDouble(journeyDetailend.Latitude), Convert.ToDouble(journeyDetailend.Longitude), lblTo, "To : ");
-                        //lblTo.Text = "To: " + toLocation,"From : "
-                        lblDuration.Text = "Duration: " + (lastJourney.EndDate - lastJourney.StartDate).Minutes.ToString();
-                        lblCost.Text = "Cost: £" + CalculateCost((lastJourney.EndDate - lastJourney.StartDate).Minutes).ToString();
+                        JourneyDetail journeyDetailStart = dataManager.GetStaringPointForJourney();
+                        JourneyDetail journeyDetailEnd = dataManager.GetEndPointForJourney();
+
+                        if (journeyDetailStart.JourneyId != 0 && journeyDetailEnd.JourneyId != 0)
+                        {
+                            if (lblStartDate != null)
+                            {
+                                lblStartDate.Text = "Start at : " + lastJourney.StartDate.ToString("dd/MM/yyyy hh:mm");
+                                //string fromLocation = "";
+                                //string toLocation = "";
+                                GetLocationNameAsync(Convert.ToDouble(journeyDetailStart.Latitude), Convert.ToDouble(journeyDetailStart.Longitude), lblFrom, "From : ");
+                                //lblFrom.Text = "From: " + fromLocation;
+
+                                GetLocationNameAsync(Convert.ToDouble(journeyDetailEnd.Latitude), Convert.ToDouble(journeyDetailEnd.Longitude), lblTo, "To : ");
+                                //lblTo.Text = "To: " + toLocation,"From : "
+                                lblDuration.Text = "Duration: " + (lastJourney.EndDate - lastJourney.StartDate).Minutes.ToString();
+                                lblCost.Text = "Cost: £" + CalculateCost((lastJourney.EndDate - lastJourney.StartDate).Minutes).ToString();
+                            }
+                            else
+                            {
+                                ShowMessage("No view found to load");
+                            }
+                        }
+                        else
+                        {
+                            ShowMessage("GPS Coordinates not captured for this journey");
+                        }
                     }
                     else
                     {
-                        ShowMessage("No view found to load");
+                        ShowMessage("Journey details not found");
                     }
                 }
                 catch (Exception ex)
@@ -79,21 +98,22 @@ namespace RentACar.UI.Activities
             return minsToCalculate * (dPerHourRate / 60.0);
         }
 
-        private async void GetLocationNameAsync(double latitude, double longitude,TextView textViewToDisplay,string staticText)
+        private async void GetLocationNameAsync(double latitude, double longitude, TextView textViewToDisplay, string staticText)
         {
             try
             {
-                var addresses =await geoCoder.GetFromLocationAsync(latitude, longitude, 1);
+                var addresses = await geoCoder.GetFromLocationAsync(latitude, longitude, 1);
                 if (addresses.Count > 0)
                 {
-                    textViewToDisplay.Text= staticText+ addresses[0].GetAddressLine(0).ToString()+" " +addresses[0].GetAddressLine(1).ToString();
+                    textViewToDisplay.Text = staticText + addresses[0].GetAddressLine(0).ToString() + " " + addresses[0].GetAddressLine(1).ToString();
                 }
                 else
-                    textViewToDisplay.Text= staticText;
+                    textViewToDisplay.Text = staticText;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                throw ex;
+                Toast.MakeText(this, ex.Message.ToString(), ToastLength.Short).Show();
+                //throw ex;
             }
         }
 
@@ -143,7 +163,7 @@ namespace RentACar.UI.Activities
                 case Resource.Id.menu_settings:
                     this.progressLayout.Visibility = ViewStates.Visible;
                     var intent_settings = new Intent(this, typeof(SettingsActivity));
-                    intent_settings.PutExtra("FromActivity", "MainMenuActivity");
+                    intent_settings.PutExtra("FromActivity", "JourneySummary");
                     StartActivity(intent_settings);
                     break;
                 case Resource.Id.menu_logout:

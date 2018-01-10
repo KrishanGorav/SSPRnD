@@ -15,6 +15,7 @@ using Newtonsoft.Json;
 using RentACar.UI.Modals;
 using Android;
 using RentACar.UI;
+using RentACar.UI.Activities;
 
 namespace RentACar.UI
 {
@@ -106,40 +107,11 @@ namespace RentACar.UI
                 case Resource.Id.menu_cancel:
                     this.progressLayout.Visibility = ViewStates.Visible;
                     string FromActivity = Intent.GetStringExtra("FromActivity");
-                    if (FromActivity == "Vehicle")
+                    if (FromActivity == "JourneySummary")
                     {
-                       // // this.progressLayout.Visibility = ViewStates.Visible;
-                       // //var intent_setting = new Intent(this, typeof(RentFlowVehicleActivity));
-                       //// intent_setting.PutExtra("RentRunningTrans", JsonConvert.SerializeObject(rentRunningTrans));
-                       // StartActivity(intent_setting);
-                    }
-                    else if (FromActivity == "MarkDamage")
-                    {
-                       // //  this.progressLayout.Visibility = ViewStates.Visible;
-                       //// var intent_setting = new Intent(this, typeof(RentFlowMarkDamageActivity));
-                       //// intent_setting.PutExtra("RentRunningTrans", JsonConvert.SerializeObject(rentRunningTrans));
-                       // StartActivity(intent_setting);
-                    }
-                    else if (FromActivity == "CheckList")
-                    {
-                       // //this.progressLayout.Visibility = ViewStates.Visible;
-                       //// var intent_setting = new Intent(this, typeof(RentFlowCheckListActivity));
-                       //// intent_setting.PutExtra("RentRunningTrans", JsonConvert.SerializeObject(rentRunningTrans));
-                       // StartActivity(intent_setting);
-                    }
-                    else if (FromActivity == "SignatureAvtivity")
-                    {
-                       // // this.progressLayout.Visibility = ViewStates.Visible;
-                       // var intent_setting = new Intent(this, typeof(RentFlowSignatureActivity));
-                       //// intent_setting.PutExtra("RentRunningTrans", JsonConvert.SerializeObject(rentRunningTrans));
-                       // StartActivity(intent_setting);
-                    }
-                    else if (FromActivity == "DriverSignatureActivity")
-                    {
-                        //// this.progressLayout.Visibility = ViewStates.Visible;
-                        //var intent_setting = new Intent(this, typeof(RentFlowDriverSignatureActivity));
-                        ////intent_setting.PutExtra("RentRunningTrans", JsonConvert.SerializeObject(rentRunningTrans));
-                        //StartActivity(intent_setting);
+                        this.progressLayout.Visibility = ViewStates.Visible;
+                        var intent_setting = new Intent(this, typeof(JourneySummary));
+                        StartActivity(intent_setting);
                     }
                     else if (FromActivity == "MainMenuActivity")
                     {
@@ -147,12 +119,7 @@ namespace RentACar.UI
                        // intent_setting.PutExtra("RentRunningTrans", JsonConvert.SerializeObject(rentRunningTrans));
                         StartActivity(intent_setting);
                     }
-                    else if (FromActivity == "Download")
-                    {
-                        var intent_setting = new Intent(this, typeof(MainMenuActivity));
-                        //intent_setting.PutExtra("RentRunningTrans", JsonConvert.SerializeObject(rentRunningTrans));
-                        StartActivity(intent_setting);
-                    }
+                    
                     break;
                 case Resource.Id.menu_sendsms:
                     //this.progressLayout.Visibility = ViewStates.Visible;

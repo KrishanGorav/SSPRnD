@@ -21,7 +21,7 @@ namespace RentACar.UI
 
         Location _currentLocation;
         LocationManager _locationManager;
-        string _locationProvider;
+        string _locationProvider =string.Empty;
 
         public override void OnCreate()
         {
@@ -69,6 +69,7 @@ namespace RentACar.UI
                 Location lastKnownLocation = _locationManager.GetLastKnownLocation(_locationProvider);
                 dataManager.AddLocationToRunningJourney(lastKnownLocation.Longitude.ToString(), lastKnownLocation.Latitude.ToString());
                 dataManager.StopCurrentRunningJourney();
+                ApplicationClass.locationProvider = null;
                 ApplicationClass.isJourneyRunning = false;
                 
                 //TimeSpan runtime = DateTime.UtcNow.Subtract(startTime);
@@ -142,13 +143,17 @@ namespace RentACar.UI
             if (acceptableLocationProviders.Any())
             {
                 _locationProvider = acceptableLocationProviders.First();
+                ApplicationClass.locationProvider = _locationProvider;
                 _locationManager.RequestLocationUpdates(_locationProvider, 0, 0, this);
             }
             else
             {
-                _locationProvider = string.Empty;
+                //_locationProvider = string.Empty;
+                var locationSettingsScreen = new Intent(Android.Provider.Settings.ActionLocationSourceSettings);
+                locationSettingsScreen.AddFlags(ActivityFlags.NewTask);
+                StartActivity(locationSettingsScreen);
             }
-            Log.Debug(TAG, "Using " + _locationProvider + ".");
+            //Log.Debug(TAG, "Using " + _locationProvider + ".");
         }
     }
 }
