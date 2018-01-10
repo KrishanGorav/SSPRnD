@@ -45,7 +45,6 @@ namespace RentACar.UI
 
             var locationProvider = _locationManager.GetBestProvider(criteriaForGPSService, true);
             _locationManager.RequestLocationUpdates(locationProvider, 0, 0, this);
-
         }
 
         public event EventHandler<LocationChangedEventArgs> LocationChanged = delegate { };

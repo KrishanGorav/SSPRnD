@@ -54,7 +54,7 @@ namespace RentACar.UI
             var callDialog = new AlertDialog.Builder(this);
             if (!String.IsNullOrWhiteSpace(txtUsername.Text.Trim()) && !String.IsNullOrWhiteSpace(txtPassword.Text.Trim()))
             {
-                if (txtUsername.Text.Trim() == "Deepak" && txtPassword.Text.Trim() == "Test@123")
+                if (txtUsername.Text.Trim() == "demo" && txtPassword.Text.Trim() == "demo")
                 {
                     if (CommonFunctions.IsNetworkConnected())
                     {
@@ -92,7 +92,7 @@ namespace RentACar.UI
                 }
                 else
                 {
-                    callDialog.SetMessage("Invalid login details.Please enter demo,demo");
+                    callDialog.SetMessage("Invalid login details.");
                     callDialog.SetNegativeButton("OK", delegate { });
                     // Show the alert dialog to the user and wait for response.
                     callDialog.Show();
@@ -100,30 +100,30 @@ namespace RentACar.UI
             }
             else
             {
-                callDialog.SetMessage("Enter Login Details");
+                callDialog.SetMessage("Enter login details");
                 callDialog.SetNegativeButton("OK", delegate { });
                 // Show the alert dialog to the user and wait for response.
                 callDialog.Show();
             }
         }
 
-        private async Task<List<UserDetail>> GetLoginAsync(string user)
-        {
-            List<UserDetail> obj = null;
-            try
-            {
-                GetAPIResult<UserDetail> api = CommonFunctions.APIGet<UserDetail>("GetUser/" + user, string.Empty);
-                if (api.HttpStatus == System.Net.HttpStatusCode.OK)
-                {
-                    obj = api.DataColl;
-                }
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
-            return obj;
-        }
+        //private async Task<List<UserDetail>> GetLoginAsync(string user)
+        //{
+        //    List<UserDetail> obj = null;
+        //    try
+        //    {
+        //        GetAPIResult<UserDetail> api = CommonFunctions.APIGet<UserDetail>("GetUser/" + user, string.Empty);
+        //        if (api.HttpStatus == System.Net.HttpStatusCode.OK)
+        //        {
+        //            obj = api.DataColl;
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw;
+        //    }
+        //    return obj;
+        //}
 
         private List<UserDetail> GetLogin(string user,string password)
         {

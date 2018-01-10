@@ -19,6 +19,8 @@ namespace RentACar.UI
         public static int UserDefaultVehicle;
         public static string ServiceEndPoint;
         public static string SecurityToken;
+        public static int currentRunningJourneyId;
+        public static bool isJourneyRunning;
     }
    
 }

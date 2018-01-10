@@ -78,7 +78,6 @@ namespace RentACar.UI.Modals
     class Journey
     {
         [PrimaryKey, AutoIncrement]
-        public int ID { get; set; }
         public int JourneyId { get; set; }
         public int VehicleId { get; set; }
         public int userId { get; set; }
@@ -99,60 +98,12 @@ namespace RentACar.UI.Modals
         [PrimaryKey, AutoIncrement]
         public int ID { get; set; }
         public int JourneyId { get; set; }
-        public decimal Longitude { get; set; }
-        public decimal Latitude { get; set; }
+        public string Longitude { get; set; }
+        public string Latitude { get; set; }
+        public DateTime CaptureTime { get; set; }
     }
 
-    [Serializable]
-    class VehicleRent
-    {
-        [PrimaryKey, AutoIncrement]
-        public int VehicleTransID { get; set; }
-        public int VehicleId { get; set; }
-        public string TransType { get; set; }
-        public string VehicleType { get; set; }
-        public string RegNo { get; set; }
-        public string FuelLevel { get; set; }
-        public string Mobile { get; set; }
-        public string Email { get; set; }
-        public int Mileage { get; set; }
-        public string MarkDamageImagePath { get; set; }
-        public string DamageDetail { get; set; }
-        public string LooseItemDetail { get; set; }
-        public int InspectionCondition { get; set; }
-        public bool Interior { get; set; }
-        public bool Roof { get; set; }
-        public bool WindScreen { get; set; }
-        public bool Bonet { get; set; }
-        public bool Engine { get; set; }
-        public bool FrontBumper { get; set; }
-        public bool NSFWheel { get; set; }
-        public bool NSDoor { get; set; }
-        public bool NSRWheel { get; set; }
-        public bool RearBumper { get; set; }
-        public bool Taligate { get; set; }
-        public bool Tools { get; set; }
-        public bool OSRWheel { get; set; }
-        public bool OSDoor { get; set; }
-        public bool OSFWheel { get; set; }
-        public bool Disc { get; set; }
-        public bool SpareTyre { get; set; }
-        public bool AlloyWheel { get; set; }
-        public bool Oil { get; set; }
-        public bool WasherFluid { get; set; }
-        public bool Coolant { get; set; }
-        public bool BrakeFluid { get; set; }
-        public bool Tyres { get; set; }
-        public int CleanedBy { get; set; }
-        public int CheckedoutBy { get; set; }
-        public int CheckedinBy { get; set; }
-        public DateTime TimeOut { get; set; }
-        public DateTime TimeIn { get; set; }
-        public byte[] CustomerSignature { get; set; }
-        public string CustomerSignatureData { get; set; }
-        public byte[] DriverSignature { get; set; }
-        public string DriverSignatureData { get; set; }
-    }
+ 
     [Serializable]
     class Setting
     {
@@ -214,56 +165,6 @@ namespace RentACar.UI.Modals
         public int EmailId { get; set; }
         public string EmailTitle { get; set; }
         public string EmailBody { get; set; }
-    }
-
-    [Serializable]
-    class VehicleMarkDamageDetails
-    {
-        [PrimaryKey, AutoIncrement]
-        public int ID { get; set; }
-
-        public int VehicleTransID { get; set; }
-        public int DamageImageId { get; set; }
-        public string DamageType { get; set; }
-        public int DamageLocationX { get; set; }
-        public int DamageLocationY { get; set; }
-        public int DamageNumber { get; set; }
-        public string ImagePath { get; set; }
-    }
-
-    [Serializable]
-    class VehicleMarkedDamageImage
-    {
-        [PrimaryKey, AutoIncrement]
-        public int ID { get; set; }
-
-        public int VehicleTransID { get; set; }
-        public int DamageImageId { get; set; }
-        public string MarkDamageImagePath { get; set; }
-    }
-
-    [Serializable]
-    class RentRunningTrans : VehicleRent
-    {
-        public List<VehicleMarkDamageDetails> RentVehicleDamage { get; set; }
-        public List<VehicleMarkedDamageImage> RentVehicleDamageImage { get; set; }
-    }
-
-    [Serializable]
-    class VehicleImage
-    {
-        [PrimaryKey, AutoIncrement]
-        public int ID { get; set; }
-        //public int VehicleTransID { get; set; }
-        public string ImageUrl { get; set; }
-        public string ExpiryDate { get; set; }
-        public string ViewPoint { get; set; }
-    }
-
-    [Serializable]
-    class VehicleImageList
-    {
-        public List<VehicleImage> VehicleImages { get; set; }
     }
 
     /// <summary>

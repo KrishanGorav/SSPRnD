@@ -82,7 +82,7 @@ namespace RentACar.UI
             //Console.WriteLine("Creating database, if it doesn't already exist");
             //string dbPath = Path.Combine(
             //     System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal),
-            //     "RentACar.db3");
+            //     "PAYG.db3");
             //var db = new SQLiteConnection(dbPath);
             //db.CreateTable<Vehicle>();
             ////if (db.Table<VehicleMaster>().Count() == 0)

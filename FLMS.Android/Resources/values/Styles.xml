@@ -21,4 +21,9 @@
     <item name="android:textColor" >#ffffff</item>
     <item name="android:radius">6dp</item>
   </style>
+  <style name="RentACarCustomStyleDisabledButton" parent="android:Theme.Material" >
+    <item name="android:background">#807f84</item>
+    <item name="android:textColor" >#ffffff</item>
+    <item name="android:radius">6dp</item>
+  </style>
 </resources>

@@ -21,7 +21,6 @@ namespace RentACar.UI
     [Activity(Label = "Send SMS")]
     public class SendSMSActivity : Activity
     {
-        RentRunningTrans rentRunningTrans;
         Spinner ddlSmsTemplate;
         EditText txtMobile;
         EditText txtSmsTemplateContent;
@@ -29,7 +28,7 @@ namespace RentACar.UI
         IList<SmsTemplate> stemp;
         ProgressBar progressLayout;
 
-        string dbPath = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "RentACar.db3");
+        string dbPath = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "PAYG.db3");
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -63,24 +62,12 @@ namespace RentACar.UI
             //ddlRegNo.ItemClick += ddlRegNo_ItemClick;
             ddlSmsTemplate.ItemSelected += new EventHandler<AdapterView.ItemSelectedEventArgs>(ddlSmsTemplate_ItemSelected);
 
-            if (savedInstanceState != null)
-            {
-                rentRunningTrans = JsonConvert.DeserializeObject<RentRunningTrans>(savedInstanceState.GetString("RentRunningTrans", JsonConvert.SerializeObject(rentRunningTrans)));
-            }
-            else if (Intent.GetStringExtra("RentRunningTrans") != null)
-            {
-                rentRunningTrans = JsonConvert.DeserializeObject<RentRunningTrans>(Intent.GetStringExtra("RentRunningTrans"));
-            }
-            //Load details from existing object
-            if (rentRunningTrans != null)
-            {
-                txtMobile.Text = rentRunningTrans.Mobile;
-            }
+           
         }
 
         protected override void OnSaveInstanceState(Bundle savedInstanceState)
         {
-            savedInstanceState.PutString("RentRunningTrans", JsonConvert.SerializeObject(rentRunningTrans));
+            //savedInstanceState.PutString("RentRunningTrans", JsonConvert.SerializeObject(rentRunningTrans));
             // always call the base implementation!
             base.OnSaveInstanceState(savedInstanceState);
         }

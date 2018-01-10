@@ -26,10 +26,9 @@ namespace RentACar.UI
         EditText txtEmailTemplateContent;
         DataManager objDataManager;
         IList<EmailTemplate> etemp;
-        RentRunningTrans rentRunningTrans;
         ProgressBar progressLayout;
 
-        string dbPath = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "RentACar.db3");
+        string dbPath = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "PAYG.db3");
         protected override void OnCreate(Bundle savedInstanceState)
         {
 
@@ -62,19 +61,6 @@ namespace RentACar.UI
 
             ddlEmailTemplate.ItemSelected += new EventHandler<AdapterView.ItemSelectedEventArgs>(ddlEmailTemplate_ItemSelected);
 
-            if (savedInstanceState != null)
-            {
-                rentRunningTrans = JsonConvert.DeserializeObject<RentRunningTrans>(savedInstanceState.GetString("RentRunningTrans", JsonConvert.SerializeObject(rentRunningTrans)));
-            }
-            else if (Intent.GetStringExtra("RentRunningTrans") != null)
-            {
-                rentRunningTrans = JsonConvert.DeserializeObject<RentRunningTrans>(Intent.GetStringExtra("RentRunningTrans"));
-            }
-            //Load details from existing object
-            if (rentRunningTrans != null)
-            {
-                txtSendTo.Text = rentRunningTrans.Mobile;
-            }
         }
 
         private void ddlEmailTemplate_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)

@@ -26,7 +26,7 @@
                         <Button
                             style="@style/RentACarCustomStyleButton"
                             android:id="@+id/btnStartCover"
-                            android:text="Start Cover kkg2"
+                            android:text="Start Cover"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content" />
                     </LinearLayout>

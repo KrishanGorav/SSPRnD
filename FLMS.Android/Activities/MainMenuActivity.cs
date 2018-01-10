@@ -9,6 +9,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using RentACar.UI.Activities;
 using RentACar.UI.Modals;
 
 namespace RentACar.UI
@@ -19,14 +20,7 @@ namespace RentACar.UI
         Button btnStartCover;
         Button btnStopCover;
         ProgressBar progressLayout;
-        bool isServiceRunning = false;
-        //LinearLayout loutAutoSync;
-
-        GPSServiceBinder _binder;
-        GPSServiceConnection _gpsServiceConnection;
-        //Intent _gpsServiceIntent;
-        //private GPSServiceReciever _receiver;
-
+        
         protected override void OnCreate(Bundle savedInstanceState)
         { 
             base.OnCreate(savedInstanceState);
@@ -68,15 +62,19 @@ namespace RentACar.UI
             this.progressLayout = FindViewById<ProgressBar>(Resource.Id.progressLayout);
             this.progressLayout.Visibility = ViewStates.Gone;
 
-            if (isServiceRunning == true)
+            if (ApplicationClass.isJourneyRunning == true)
             {
                 btnStartCover.Enabled = false;
+                btnStartCover.SetTextColor(Android.Graphics.Color.Gray);
                 btnStopCover.Enabled = true;
+                btnStopCover.SetTextColor(Android.Graphics.Color.White);
             }
             else
             {
                 btnStartCover.Enabled = true;
+                btnStartCover.SetTextColor(Android.Graphics.Color.White);
                 btnStopCover.Enabled = false;
+                btnStopCover.SetTextColor(Android.Graphics.Color.Gray);
             }
         }
 
@@ -102,11 +100,22 @@ namespace RentACar.UI
         private void btnStartCover_Click(object sender, EventArgs e)
         {
             this.progressLayout.Visibility = ViewStates.Visible;
-            StartService(new Intent(this, typeof(SimpleStartedService)));
-            isServiceRunning = true;
+            StartService(new Intent(this, typeof(CoordinateService)));
             btnStartCover.Enabled = false;
+            btnStartCover.SetTextColor(Android.Graphics.Color.Gray);
             btnStopCover.Enabled = true;
-            this.progressLayout.Visibility = ViewStates.Invisible;
+            btnStopCover.SetTextColor(Android.Graphics.Color.White);
+            this.progressLayout.Visibility = ViewStates.Gone;
+            ShowMessage("You cover has started.");
+        }
+
+        private void ShowMessage(string message)
+        {
+            var callDialog = new AlertDialog.Builder(this);
+            callDialog.SetMessage(message);
+            callDialog.SetNegativeButton("OK", delegate { });
+            // Show the alert dialog to the user and wait for response.
+            callDialog.Show();
         }
 
         private void RegisterService()
@@ -119,21 +128,18 @@ namespace RentACar.UI
         private void btnStopCover_Click(object sender, EventArgs e)
         {
             this.progressLayout.Visibility = ViewStates.Visible;
-            StopService(new Intent(this, typeof(SimpleStartedService)));
-            isServiceRunning = false;
+            StopService(new Intent(this, typeof(CoordinateService)));
             btnStartCover.Enabled = true;
+            btnStartCover.SetTextColor(Android.Graphics.Color.White);
             btnStopCover.Enabled = false;
-            this.progressLayout.Visibility = ViewStates.Invisible;
-        }
-
-        private void btnRentIN_Click(object sender, EventArgs e)
-        {
-           //this.progressLayout.Visibility = ViewStates.Visible;
-           // var intent = new Intent(this, typeof(RentFlowVehicleActivity));
-           // intent.PutExtra("ShowVehicleForStatus", "OUT");
-           // intent.PutExtra("TransType", "IN");
-            
-           // StartActivity(intent);
+            btnStopCover.SetTextColor(Android.Graphics.Color.Gray);
+            this.progressLayout.Visibility = ViewStates.Gone;
+            //ShowMessage("You cover has stopped.");
+            var journeySummary = new Intent(this, typeof(JourneySummary));
+            //intentSendSMS.PutExtra("MobileNo", rentRunningTrans.Mobile);
+            //intentSendSMS.PutExtra("FromActivity", "MarkDamage");
+            //intentSendSMS.PutExtra("RentRunningTrans", JsonConvert.SerializeObject(rentRunningTrans));
+            StartActivity(journeySummary);
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)

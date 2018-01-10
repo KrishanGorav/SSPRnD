@@ -1,14 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-
-using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using RentACar.UI.Modals;
 using System.IO;
 using SQLite;
@@ -17,7 +9,159 @@ namespace RentACar.UI
 {
     class DataManager
     {
-        string dbPath = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "RentACar.db3");
+        string dbPath = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "PAYG.db3");
+
+        public int AddRecordForStartJourney()
+        {
+            using (var db = new SQLiteConnection(dbPath))
+            {
+                try
+                {
+                    Journey journey = new Journey();
+                    journey.userId = ApplicationClass.userId;
+                    journey.VehicleId = ApplicationClass.UserDefaultVehicle;
+                    journey.StartDate = DateTime.Now;
+                    db.Insert(journey);
+                    return journey.JourneyId;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                    //exception handling code to go here
+                }
+            }
+        }
+
+        public void StopCurrentRunningJourney()
+        {
+            if (ApplicationClass.currentRunningJourneyId != 0)
+            {
+                using (var db = new SQLiteConnection(dbPath))
+                {
+                    try
+                    {
+                        var currentJourney = db.Table<Journey>().Where(o => o.JourneyId == ApplicationClass.currentRunningJourneyId).FirstOrDefault();
+                        if (currentJourney != null)
+                        {
+                            currentJourney.EndDate = DateTime.Now;
+                            db.Update(currentJourney);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                        //exception handling code to go here
+                    }
+                }
+            }
+        }
+
+        public Journey GetLastJourney()
+        {
+            Journey journey = new Journey();
+            if (ApplicationClass.currentRunningJourneyId != 0)
+            {
+                using (var db = new SQLiteConnection(dbPath))
+                {
+                    try
+                    {
+
+                        var currentJourney = db.Table<Journey>().Where(o => o.JourneyId == ApplicationClass.currentRunningJourneyId).FirstOrDefault();
+                        if (currentJourney != null)
+                        {
+                            journey.StartDate = currentJourney.StartDate;
+                            journey.EndDate = currentJourney.EndDate;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                        //exception handling code to go here
+                    }
+                }
+            }
+            return journey;
+        }
+
+        public JourneyDetail GetStaringPointForJourney()
+        {
+            JourneyDetail journeyDetail = new JourneyDetail();
+            if (ApplicationClass.currentRunningJourneyId != 0)
+            {
+                using (var db = new SQLiteConnection(dbPath))
+                {
+                    try
+                    {
+                        
+                        var currentJourney = db.Table<JourneyDetail>().Where(o => o.JourneyId == ApplicationClass.currentRunningJourneyId).FirstOrDefault();
+                        if (currentJourney != null)
+                        {
+                            journeyDetail.Longitude = currentJourney.Longitude;
+                            journeyDetail.Latitude = currentJourney.Latitude;
+                            journeyDetail.CaptureTime = currentJourney.CaptureTime;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                        //exception handling code to go here
+                    }
+                }
+            }
+            return journeyDetail;
+        }
+
+        public JourneyDetail GetEndPointForJourney()
+        {
+            JourneyDetail journeyDetail = new JourneyDetail();
+            if (ApplicationClass.currentRunningJourneyId != 0)
+            {
+                using (var db = new SQLiteConnection(dbPath))
+                {
+                    try
+                    {
+
+                        var currentJourney = db.Table<JourneyDetail>().Where(o => o.JourneyId == ApplicationClass.currentRunningJourneyId).LastOrDefault();
+                        if (currentJourney != null)
+                        {
+                            journeyDetail.Longitude = currentJourney.Longitude;
+                            journeyDetail.Latitude = currentJourney.Latitude;
+                            journeyDetail.CaptureTime = currentJourney.CaptureTime;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                        //exception handling code to go here
+                    }
+                }
+            }
+            return journeyDetail;
+        }
+
+        public void AddLocationToRunningJourney(string longitude, string latitude)
+        {
+            if (ApplicationClass.currentRunningJourneyId != 0)
+            {
+                using (var db = new SQLiteConnection(dbPath))
+                {
+                    try
+                    {
+                        JourneyDetail journeyDetail = new JourneyDetail();
+                        journeyDetail.JourneyId = ApplicationClass.currentRunningJourneyId;
+                        journeyDetail.Longitude = longitude;
+                        journeyDetail.Latitude = latitude;
+                        journeyDetail.CaptureTime = DateTime.Now;
+                        db.Insert(journeyDetail);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                        //exception handling code to go here
+                    }
+                }
+            }
+        }
 
         public long SaveUserDetailsToLocal(UserDetail userDetail)
         {
@@ -325,7 +469,7 @@ namespace RentACar.UI
                 }
             }
         }
-       
+
         #endregion
 
         #region EmailToSend
@@ -350,7 +494,7 @@ namespace RentACar.UI
                 }
             }
         }
-       
+
         public long SaveEmailToLocal(EmailToSend email)
         {
             using (var db = new SQLiteConnection(dbPath))
@@ -630,7 +774,7 @@ namespace RentACar.UI
                 }
             }
         }
-       
+
         #endregion
 
         public int CreateVehicleTable()
@@ -687,7 +831,7 @@ namespace RentACar.UI
                 {
                     if (!db.GetTableInfo("Journey").Any())
                     {
-                        return db.CreateTable<Vehicle>();
+                        return db.CreateTable<Journey>();
                     }
                     else
                     {
@@ -710,7 +854,7 @@ namespace RentACar.UI
                 {
                     if (!db.GetTableInfo("JourneyDetail").Any())
                     {
-                        return db.CreateTable<Vehicle>();
+                        return db.CreateTable<JourneyDetail>();
                     }
                     else
                     {
@@ -725,73 +869,6 @@ namespace RentACar.UI
             }
         }
 
-        public int CreateVehicleRentTable()
-        {
-            using (var db = new SQLiteConnection(dbPath))
-            {
-                try
-                {
-                    if (!db.GetTableInfo("VehicleRent").Any())
-                    {
-                        return db.CreateTable<VehicleRent>();
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    //exception handling code to go here
-                    throw ex;
-                }
-            }
-        }
-
-        public int CreateVehicleMarkDamageDetailsTable()
-        {
-            using (var db = new SQLiteConnection(dbPath))
-            {
-                try
-                {
-                    if (!db.GetTableInfo("VehicleMarkDamageDetails").Any())
-                    {
-                        return db.CreateTable<VehicleMarkDamageDetails>();
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    //exception handling code to go here
-                    throw ex;
-                }
-            }
-        }
-        public int CreateVehicleMarkedDamageImageTable()
-        {
-            using (var db = new SQLiteConnection(dbPath))
-            {
-                try
-                {
-                    if (!db.GetTableInfo("VehicleMarkedDamageImage").Any())
-                    {
-                        return db.CreateTable<VehicleMarkedDamageImage>();
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    //exception handling code to go here
-                    throw ex;
-                }
-            }
-        }
         public int AddDefaultSmsTemplate()
         {
             try
