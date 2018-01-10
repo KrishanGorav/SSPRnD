@@ -97,6 +97,7 @@ namespace RentACar.UI
                         var currentJourney = db.Table<JourneyDetail>().Where(o => o.JourneyId == ApplicationClass.currentRunningJourneyId).FirstOrDefault();
                         if (currentJourney != null)
                         {
+                            journeyDetail.JourneyId = currentJourney.JourneyId;
                             journeyDetail.Longitude = currentJourney.Longitude;
                             journeyDetail.Latitude = currentJourney.Latitude;
                             journeyDetail.CaptureTime = currentJourney.CaptureTime;

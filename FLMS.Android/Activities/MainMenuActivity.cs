@@ -102,7 +102,7 @@ namespace RentACar.UI
             this.progressLayout.Visibility = ViewStates.Visible;
             StartService(new Intent(this, typeof(CoordinateService)));
             
-            if (ApplicationClass.locationProvider != null)
+            //if (ApplicationClass.locationProvider != null)
             {
                 btnStartCover.Enabled = false;
                 btnStartCover.SetTextColor(Android.Graphics.Color.Gray);
@@ -111,10 +111,10 @@ namespace RentACar.UI
                 this.progressLayout.Visibility = ViewStates.Gone;
                 ShowMessage("You cover has started.");
             }
-            else
-            {
-                this.progressLayout.Visibility = ViewStates.Gone;
-            }
+            //else
+            //{
+            //    this.progressLayout.Visibility = ViewStates.Gone;
+            //}
             
         }
 
